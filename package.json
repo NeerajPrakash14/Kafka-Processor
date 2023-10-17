@@ -1,0 +1,30 @@
+{
+  "name": "kafka-processor",
+  "version": "1.0.0",
+  "description": "A Processor powered by Kafka engine",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NeerajPrakash14/Kafka-Processor.git"
+  },
+  "keywords": [
+    "kafka",
+    "nodejs",
+    "consumer",
+    "pipeline"
+  ],
+  "author": "Neeraj Prakash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NeerajPrakash14/Kafka-Processor/issues"
+  },
+  "homepage": "https://github.com/NeerajPrakash14/Kafka-Processor#readme",
+  "dependencies": {
+    "kafkajs": "^2.2.4",
+    "redis": "^4.6.10"
+  }
+}
