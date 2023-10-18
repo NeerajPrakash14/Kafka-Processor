@@ -1,9 +1,12 @@
 
 const {kafka} = require('./main')
 
+const MESSAGE_INTERVAL = 1; // in milliseconds
+
 const producer = kafka.producer()
 //module.exports = produce_msg()
-produce_msg()
+
+
 
 
 async function send_msg(topic, messages){
@@ -14,19 +17,19 @@ async function send_msg(topic, messages){
 }
 
 async function produce_msg(){
-
     await producer.connect()
-
     setInterval(async () => {
         await send_msg("topic1", [
             { value: 'Hello KafkaJS user! ' + new Date().getTime().toString() },
         ])
-    }, 1000)
-    // await send_msg("topic1", [
-    //     { value: 'Hello KafkaJS userrrr!' },
-    // ])
-
+    }, MESSAGE_INTERVAL)
     //await producer.disconnect() 
 }
 
+function startProducers(producerCount){
+    for(let i=0;i<producerCount;i++){
+        produce_msg()
+    }
+}
 
+startProducers(1000);
