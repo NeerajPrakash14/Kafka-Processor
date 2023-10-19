@@ -6,6 +6,7 @@ const { Kafka } = require('kafkajs')
 const kafka = new Kafka({
     clientId: 'my-app',
     brokers: ['localhost:9092'],
+    
 })
 
 
@@ -44,7 +45,7 @@ async function Admin(){
 }
 
 
-Admin()
+//Admin()
 
 
 
