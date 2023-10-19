@@ -2,9 +2,9 @@ const {kafka} = require('./main')
 //const {publisher, subscriber} = require('./pub-sub')
 
 
-const run = async (consumer) => {
+const consume_msg = async (consumer) => {
     await consumer.connect();
-    await consumer.subscribe({ topic: "topic1", fromBeginning: true });
+    await consumer.subscribe({ topic: "app1", fromBeginning: true });
   
     // await consumer.run({
     //   eachMessage: async ({ topic, partition, message }) => {
@@ -23,7 +23,7 @@ const run = async (consumer) => {
     // });
 
 
-    console.time("single_consumer");
+    //console.time("single_consumer");
     await consumer.run({
         eachBatchAutoResolve: false,
         eachBatch: async ({ batch, resolveOffset, heartbeat, isRunning, isStale }) => {
@@ -33,19 +33,27 @@ const run = async (consumer) => {
                 console.log({
                     offset: message.offset,
                     value: message.value.toString(),
-                  });
+                });
                 resolveOffset(message.offset)
                 await heartbeat()
             }
         },
         //maxBatchSize: 10
     })
-    console.timeEnd("single_consumer");
+    //console.timeEnd("single_consumer");
 };
 
 
-const consumer1 = kafka.consumer({ groupId: 'cgroup1' })
-run(consumer1).catch(console.error);
+// function startConsumers(consumerCount){
+//     for(let i=0;i<consumerCount;i++){
+//         const consumer1 = kafka.consumer({ groupId: 'group1' })
+//         consume_msg(consumer1).catch(console.error);
+//     }
+// }
 
-// const consumer2 = kafka.consumer({ groupId: 'cgroup2' })
-// run(consumer2).catch(console.error);
+// startConsumers(1);
+
+
+
+const consumer2 = kafka.consumer({ groupId: 'cgroup2' })
+consume_msg(consumer2).catch(console.error);
