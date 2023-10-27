@@ -1,0 +1,10 @@
+{
+    "name": "Anderson",
+    "type": "App",
+    "version": "1.0",
+    "server": "0.0.0.0",
+    "ping": 1,
+    "response_lag": 200,
+    "length": 10,
+    "value": "Msg value"
+}
