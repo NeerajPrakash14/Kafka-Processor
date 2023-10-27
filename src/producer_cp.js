@@ -1,5 +1,7 @@
 
 const {kafka} = require('./main')
+const unstructured_msg_schema = require('../unstructured_msg_schema.json');
+
 
 const MESSAGE_INTERVAL = 1; // in milliseconds
 
@@ -21,8 +23,8 @@ async function produce_msg(){
     setInterval(async () => {
         calls = calls + 1;
         console.log("Calls -> ", calls);
-        await send_msg("app1", [
-            { value: "producerID"},
+        await send_msg("test-topic", [
+            unstructured_msg_schema
         ])
     }, MESSAGE_INTERVAL)
     //await producer.disconnect() 
@@ -34,4 +36,4 @@ function startProducers(producerCount){
     }
 }
 
-startProducers(100);
+startProducers(1);
