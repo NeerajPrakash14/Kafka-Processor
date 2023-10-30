@@ -6,6 +6,8 @@ const {kafka} = require('./main');
     const admin = kafka.admin()
     await admin.connect()
 
+    
+
 
     let total_lag = 0;
     const offset_info = {};
