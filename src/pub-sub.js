@@ -16,6 +16,7 @@ const { createClient } = require('redis');
 const publisher = createClient();
 const subscriber = createClient();
 
+
 (async () => {
     await publisher.connect();
     await subscriber.connect();
