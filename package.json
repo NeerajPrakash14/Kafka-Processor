@@ -4,8 +4,10 @@
   "description": "A Processor powered by Kafka engine",
   "main": "index.js",
   "scripts": {
-    "start-producer": "node src/producer_cp.js",
+    "start-producer": "node src/producer_cp.js", 
     "start-consumer": "node src/consumer_cp.js",
+    "c-s": "node consumer-services/consumer",
+    "sr-s": "node schema-registry-services/index",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,6 +28,7 @@
   },
   "homepage": "https://github.com/NeerajPrakash14/Kafka-Processor#readme",
   "dependencies": {
+    "@kafkajs/confluent-schema-registry": "^3.3.0",
     "kafka-streams": "^5.0.0",
     "kafkajs": "^2.2.4",
     "redis": "^4.6.10"
@@ -34,3 +37,4 @@
     "nodemon": "^3.0.1"
   }
 }
+
